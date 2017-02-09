@@ -6,7 +6,7 @@
 	<title>pages</title>
 
 	<!--  meta标签 -->
-	<meta name="author" content="morelearn,morelearn1990,morelearn1990@gmail.com">
+	<meta name="author" content="morelearn,morelearn1990,morelearn1990@gmali.com">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<meta name="format-detection" content="telephone=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,20 +24,21 @@
 <!-- 头部 包括导航等 -->
 <header class="container-fluid navbar navbar-fixed-top" >
 	<nav>
-		<div><i class="fa fa-ravelry"></i> morelearn</div>
-		<div class="nav nav-pills .nav-stacked">
-			<div role="presentation" class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-navicon"></span></a>
-				<ul class="dropdown-menu">
-					<il>主页|Home</il>
-					<il>文章|article</il>
-					<il>关于|About</il>
-					<il>
+		<div><a href="/"><i class="fa fa-ravelry"></i> morelearn</a></div>
+		<div class="">
+			<div role="presentation" class="">
+				<!--<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-navicon"></span></a>-->
+				<ul class="menu">
+					<li><a href="/">主页|Home</a></li>
+					<li><a href="#">文章|article</a></li>
+					<li><a href="#">关于|About</a></li>
+
+					<!-- <li>
 						<div class="input-group">
 							<input type="text" class="form-control" placeholder="搜索" aria-describedby="basic-addon2">
 							<span class="input-group-addon" id=" basic-addon2"><i class="fa fa-search"></i></span>
 						</div>
-					</il>
+					</li> -->
 				</ul>
 			</div>
 		</div>
@@ -171,42 +172,44 @@
 					<img src="./index/portrait.png" alt="">
 				</div>
 			</div>
-			<div>
-				<p class="modul-header">文章分类</p><hr>
-				<ul class="list-group">
-					<il class="list-group-item">分类标签</il>
-					<il class="list-group-item">分类标签</il>
-					<il class="list-group-item">分类标签</il>
-					<il class="list-group-item">分类标签</il>
-					<il class="list-group-item">分类标签</il>
-					<il class="list-group-item">分类标签</il>
-				</ul>
-			</div>
-			<div>
-				<p class="modul-header">社交方式</p><hr>
-				<ul>
-					<il>
-						<a href="https://github.com/morelearn1990" target="_blank">
-							<i class="fa fa-twitter"></i>
-						</a>
-					</il>
-					<il>
-						<a href="https://github.com/morelearn1990" target="_blank">
-							<i class="fa fa-github"></i>
-						</a>
-					</il>
-					<il>
-						<a href="https://github.com/morelearn1990" target="_blank">
-							<i class="fa fa-codepen"></i>
-						</a>
-					</il>
-				</ul>
+			<div class="roll">
+				<div>
+					<p class="modul-header">文章分类</p><hr>
+					<ul class="list-group">
+						<li class="list-group-item"><a href="">html</a></li>
+						<li class="list-group-item"><a href="">css</a></li>
+						<li class="list-group-item"><a href="">javascript</a></li>
+						<li class="list-group-item"><a href="">编辑器</a></li>
+						<li class="list-group-item"><a href="">杂谈</a></li>
+					</ul>
+				</div>
+				<div>
+					<p class="modul-header">社交方式</p><hr>
+					<ul>
+						<li>
+							<a href="https://github.com/morelearn1990" target="_blank">
+								<i class="fa fa-twitter"></i>
+							</a>
+						</li>
+						<li>
+							<a href="https://github.com/morelearn1990" target="_blank">
+								<i class="fa fa-github"></i>
+							</a>
+						</li>
+						<li>
+							<a href="https://github.com/morelearn1990" target="_blank">
+								<i class="fa fa-codepen"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</aside>
 	</div>
 </div>
 
 <!-- 页脚 -->
+
 <footer>2017 @morelearn</footer>
 
 <!-- 常用js库导入 -->
@@ -215,7 +218,21 @@
 
 <!-- js代码 -->
 <script type="text/javascript" >
-
+ /*	function postChange(){
+		var obj = $(".roll");
+		var objH = obj.offset().top;
+		if(objH > 70){
+			obj.css({ "position":"relative"});
+		}else {
+			obj.css({ "position":"fixed"});
+		}
+	}
+	$("document").ready(function(){
+		$("window").scroll(function(){
+			postChange();
+		});
+	});
+	*/
 
 </script>
 
