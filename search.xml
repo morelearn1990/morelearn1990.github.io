@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+    
+    <entry>
+      <title><![CDATA[HTTP 原理]]></title>
+      <url>/2017/12/31/HTTP%20%E5%8E%9F%E7%90%86/</url>
+      <content type="html"><![CDATA[<h1 id="TCP-IP-协议参考模型"><a href="#TCP-IP-协议参考模型" class="headerlink" title="TCP/IP 协议参考模型"></a>TCP/IP 协议参考模型</h1><p><img src="/img/TCP-IP参考模型.png" alt="TCP/IP 协议参考模型"></p>
+<p>TCP/IP是全世界的计算机和网络设备常用的层次化分组交换网络协议集，属于参考模型的传输层，用于过滤掉每个计算机的差异性，隐藏相关弱点，向应用程序提供“相同的”服务接口。</p>
+<h1 id="HTTP-概念"><a href="#HTTP-概念" class="headerlink" title="HTTP 概念"></a>HTTP 概念</h1><p>http 是数据传输协议（超文本传输协议），用来沟通客户端和服务器，是一种 client-server 协议，它是承载于 TCP/IP 之上。通常是由像浏览器这样的接受方发起的，像浏览器这样的客户端发出的消息叫做 requests，那么被服务端回应的消息就叫做 responses。</p>
+<h2 id="媒体资源"><a href="#媒体资源" class="headerlink" title="媒体资源"></a>媒体资源</h2><p>网络上的一切内容皆资源，无论是静态文件，还是动态生成的代码。</p>
+<p>我们通过 <strong><em>媒体类型(数据类型标记)</em></strong> 来告诉接收端(一般指客户端)，接收到的数据是什么类型，让接收端知道怎么才能处理该文件。</p>
+<p>常见标记方式就是 <strong><em>MIME</em></strong> ，MIME描述了文件的主要类型以及特定子类型，例如：”Content-Type”:”text/html”，其中text描述的文件的主要类型是文本，而其特定类型是html文档！</p>
+<h2 id="URI、URL、URN"><a href="#URI、URL、URN" class="headerlink" title="URI、URL、URN"></a>URI、URL、URN</h2><p>URI(Uniform Resource Identifier) 统一资源标识符，它的作用就是在网络上唯一确定一个资源。它有两个子集：URL(Uniform Resource Location)和URN(Uniform Resource Name)。如果不特别声明，我们所说的URI就是指URL。URL 通过给出的地址指向网络资源，URN 通过给出的命名指向资源（就像 ISBN 对于一本书一样）。</p>
+<h2 id="HTTP-事务"><a href="#HTTP-事务" class="headerlink" title="HTTP 事务"></a>HTTP 事务</h2><p>“一次http链接（不包括tcp/ip连接，只包括一次http消息发送与接收）”的整个过程，由请求命令和响应结果组成</p>
+<h2 id="消息"><a href="#消息" class="headerlink" title="消息"></a>消息</h2><p>消息是http协议一种纯文本的数据格式，分为请求消息和响应消息，两种消息都具有类似的结构，分别由三个部分构成：起始行、首部、主体，起始行描述消息干了什么！首部描述消息传输的具体细节！主体描述传输的实际内容！</p>
+<h2 id="HTTP-的组件系统"><a href="#HTTP-的组件系统" class="headerlink" title="HTTP 的组件系统"></a>HTTP 的组件系统</h2><p>代理、缓存、网关、隧道及Agent代理</p>
+<ul>
+<li>代理代理位于客户端和服务器之间，接收所有客户端的HTTP请求，并把这些请求转发给服务器（可能会对请求进行修改之后转发）。对用户来说，这些应用程序就是一个代理，代表用户访问服务器。代理的主要作用有过滤、屏蔽等！（还有需要注意一点：代理既可以代表服务器对客户端进行响应，又可以代表客户端对服务器进行请求！）</li>
+<li>缓存：首先说明一下，缓存某种意义上来说也是一种代理服务器。它主要使用代表服务器对客户端进行响应。发送预先缓存好的资源的副本。这样会加快事务响应速度、同时也会减少服务器的负载、减轻带宽等问题！</li>
+<li>网关：网关是一种特殊的服务器，面对客户端时好像它就是服务器，而对于服务器，他又充当客户端的角色，它的主要作用是协议转换！例如HTTP/FTP网关。</li>
+<li>隧道：就是一个连接通道，用于在http信道上发送非http协议的资源。</li>
+<li>Agent代理：就是我们平时所说的浏览器，以及web机器人、爬虫等！</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> HTTP </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[浏览器的标准模式和怪异模式]]></title>
+      <url>/2017/12/29/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E6%A0%87%E5%87%86%E6%A8%A1%E5%BC%8F%E5%92%8C%E6%80%AA%E5%BC%82%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<h1 id="浏览器的标准模式和怪异模式"><a href="#浏览器的标准模式和怪异模式" class="headerlink" title="浏览器的标准模式和怪异模式"></a>浏览器的标准模式和怪异模式</h1><h2 id="不同模式由来-来源"><a href="#不同模式由来-来源" class="headerlink" title="不同模式由来 来源"></a>不同模式由来 <a href="https://www.jianshu.com/p/dcab7cde8c04" target="_blank" rel="noopener">来源</a></h2><p>在HTML与CSS的标准化未完成之前，各个浏览器对于HTML和CSS的解析有各自不同的实现，而有很多旧的网页都是按照这些非标准的实现去设计的。在HTML与CSS标准确定之后，浏览器一方面要按照标准去实现对HTML与CSS的支持，另一方面又要保证对非标准的旧网页设计的后向兼容性。因此，现代的浏览器一般都有两种渲染模式：标准模式和怪异模式。在标准模式下，浏览器按照HTML与CSS标准对文档进行解析和渲染；而在怪异模式下，浏览器则按照旧有的非标准的实现方式对文档进行解析和渲染。这样的话，对于旧有的网页，浏览器启动怪异模式，就能够使得旧网页正常显示；对于新的网页，则可以启动标准模式，使得新网页能够使用HTML与CSS的标准特性。</p>
+<h2 id="浏览器如何确定使用哪种渲染模式"><a href="#浏览器如何确定使用哪种渲染模式" class="headerlink" title="浏览器如何确定使用哪种渲染模式"></a>浏览器如何确定使用哪种渲染模式</h2><p>当浏览器遇到正确的文档声明时，浏览器就会启动标准模式，按照制定的文档类型标准解析和渲染文档。而对于旧有的网页，由于网页编写的当时标准还没有确定，所以一般是不会有文档类型声明的。所以，对于没有文档类型声明或者文档类型声明不正确的文档，浏览器就会认为它是一个旧的HTML文档，就会使用怪异模式解析和渲染该文档。</p>
+<p>HTML5 DOCTYPE 声明： \&lt;!DOCTYPE html></p>
+<p>注：由于已经进入 HTML5 很久了，HTML5 之前的文档类型声明就不写了，估计现在没有谁还去用。</p>
+<h2 id="标准模式与怪异模式常见区别"><a href="#标准模式与怪异模式常见区别" class="headerlink" title="标准模式与怪异模式常见区别"></a>标准模式与怪异模式常见区别</h2><ol>
+<li>盒模型的处理差异 (已经验证)</li>
+</ol>
+<ul>
+<li>IE盒子模型：</li>
+</ul>
+<p><img src="/img/iebox.png" alt="IE 盒子模型"></p>
+<ul>
+<li>标准盒子模型：</li>
+</ul>
+<p><img src="/img/box.png" alt="标准盒子模型"></p>
+<p>ps:当然盒子模型可以通过 css 属性 <code>box-sizing</code> 来切换。</p>
+<ol>
+<li>行内元素的垂直对齐 (已经验证)</li>
+</ol>
+<p>对于 inline 元素和 table-cell 元素，标准模式下 vertical-align 属性默认取值为 baseline .在怪异模式下， table 单元格中的图片的 vertical-align 属性默认取值为 bottom ，因此在图片底部会有及像素的空间。</p>
+<ol>
+<li>\<table> 元素中的字体 (已经验证)</table></li>
+</ol>
+<p>CSS 中，对于 font 的属性都是可以继承的，怪异模式下，对于 table 元素，字体的某些元素将不会从 body 等其他封装元素中继承得到，特别是 font-size 属性。</p>
+<ol>
+<li>内联元素的尺寸 (chrome 未验证成功)</li>
+</ol>
+<p>标准模式下， non-replaced inline 元素无法自定义大小，怪异模式下，定义这些元素的 width ， height 属性可以影响这些元素显示的尺寸。</p>
+<ol>
+<li>元素的百分比高度 (chrome 未验证成功)</li>
+</ol>
+<ul>
+<li><p>CSS 中对于元素的百分比高度规定如下：百分比为元素包含块的高度，不可为负值，如果包含块的高度没有显示给出，该值等同于 auto，所以百分比的高度必须在父元素有高度声明的情况下使用。</p>
+</li>
+<li><p>当一个元素使用百分比高度时，标准模式下，高度取决于内容变化，怪异模式下，百分比高度被正确应用。</p>
+</li>
+</ul>
+<ol>
+<li>元素溢出的处理 (chrome 未验证成功)</li>
+</ol>
+<p>标准模式下，overflow 取默认值visible ，在怪异模式下，该溢出会被当做扩展 box 来对待，即元素的大小由其内容决定，溢出不会裁减，元素框自动调整，包含溢出内容。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> HTML </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[HTML5 新特性]]></title>
+      <url>/2017/12/28/HTML5%20%E6%96%B0%E7%89%B9%E6%80%A7/</url>
+      <content type="html"><![CDATA[<h1 id="HTML5-新特性"><a href="#HTML5-新特性" class="headerlink" title="HTML5 新特性"></a>HTML5 新特性</h1><h2 id="HTML5-新特性-一-语义标签"><a href="#HTML5-新特性-一-语义标签" class="headerlink" title="HTML5 新特性(一)语义标签"></a>HTML5 新特性(一)语义标签</h2><ol>
+<li><p>section 定义文档中的主体部分的节、段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;section&gt;&lt;/section&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>article 定义来自外部的一个独立的、完整的内容块</p>
+</li>
+</ol>
+<p>一个特殊的section标签，比section有更明确的语义。定义来自外部的一个独立的、完整的内容块，例如什么论坛的文章，博客的文本。。。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;article&gt;&lt;/article&gt;</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><p>aside 用来装载页面中非正文的内容，独立于其他模块，广告、成组的链接、侧边栏。。。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;aside&gt;&lt;/aside&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>header 和 footer </p>
+</li>
+</ol>
+<ul>
+<li>header 定义文档、页面的页眉。通常是一些引导和导航信息，不局限于整个页面头部，也可以用在内容里。</li>
+<li>footer 定义了文档、页面的页脚，和 header 类似。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;header&gt;&lt;/header&gt;</span><br><span class="line">&lt;footer&gt;&lt;/footer&gt;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>nav 定义了一个链接组组成的导航部分</li>
+</ol>
+<p>其中的链接可以链接到其他网页或者当前页面的其他部分。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;nav&gt;&lt;/nav&gt;</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>figure 和 figcaption</li>
+</ol>
+<ul>
+<li>figure 用于对元素进行组合</li>
+<li>figcaption 为figure元素加标题</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;figure&gt;</span><br><span class="line">  &lt;img src=&quot;img/mdn-logo-sm.png&quot; alt=&quot;An awesome picture&quot;&gt;	</span><br><span class="line">  &lt;figcaption&gt;Fig1. MDN Logo&lt;/figcaption&gt;</span><br><span class="line">&lt;/figure&gt;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>details 和 summary</li>
+</ol>
+<ul>
+<li>details 定义元素的细节,用户可以点击查看或者隐藏</li>
+<li>summary 用作 一个 details 元素的一个内容的摘要，标题或图例</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;details&gt;</span><br><span class="line">  &lt;summary&gt;Some details&lt;/summary&gt; </span><br><span class="line">  &lt;p&gt;More info about the details.&lt;/p&gt; </span><br><span class="line">&lt;/details&gt;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>canvas 用来进行canvas绘图。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;canvas&gt;&lt;/canvas&gt;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>video 和 audio</li>
+</ol>
+<ul>
+<li>video 定义视频</li>
+<li>audio 定义音频</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;video&gt;&lt;/video&gt;</span><br><span class="line">&lt;audio&gt;&lt;/audio&gt;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>source 和 track</li>
+</ol>
+<ul>
+<li>source 该标签为媒介元素(比如video、audio)定义媒介元素</li>
+<li>track 媒体类元素的外部轨道</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;video controls&gt;</span><br><span class="line">  &lt;source src=&quot;foo.webm&quot; type=&quot;video/webm&quot;&gt;</span><br><span class="line">  &lt;source src=&quot;foo.ogg&quot; type=&quot;video/ogg&quot;&gt; </span><br><span class="line">  &lt;source src=&quot;foo.mov&quot; type=&quot;video/quicktime&quot;&gt;</span><br><span class="line">  &lt;track kind=&quot;captions&quot; src=&quot;foo.en.vtt&quot; srclang=&quot;en&quot; label=&quot;English&quot;&gt;</span><br><span class="line">  &lt;track kind=&quot;captions&quot; src=&quot;foo.sv.vtt&quot; srclang=&quot;sv&quot; label=&quot;Svenska&quot;&gt;</span><br><span class="line">&lt;/video&gt;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>datalist 包含了一组 option 元素,这些元素表示其它表单控件可选值.</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;label&gt;Choose a browser from this list:</span><br><span class="line">&lt;input list=&quot;browsers&quot; name=&quot;myBrowser&quot; /&gt;&lt;/label&gt;</span><br><span class="line">&lt;datalist id=&quot;browsers&quot;&gt;</span><br><span class="line">  &lt;option value=&quot;Chrome&quot;&gt;</span><br><span class="line">  &lt;option value=&quot;Firefox&quot;&gt;</span><br><span class="line">  &lt;option value=&quot;Internet Explorer&quot;&gt;</span><br><span class="line">&lt;/datalist&gt;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>mark 代表突出显示的文字</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&amp;lt;mark&amp;gt; 元素用于 &lt;mark&gt;高亮&lt;/mark&gt; 文本&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>output 表示计算或用户操作的结果。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form oninput=&quot;result.value=parseInt(a.value)+parseInt(b.value)&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;range&quot; name=&quot;b&quot; value=&quot;50&quot; /&gt; +</span><br><span class="line">    &lt;input type=&quot;number&quot; name=&quot;a&quot; value=&quot;10&quot; /&gt; =</span><br><span class="line">    &lt;output name=&quot;result&quot;&gt;&lt;/output&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>progress 进度条，运行中的进度</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;progress value=&quot;70&quot; max=&quot;100&quot;&gt;70 %&lt;/progress&gt;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>time 表示日期则也可包含时间和时区</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;The concert starts at &lt;time&gt;20:00&lt;/time&gt;.&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="新特性-二-表单新特性"><a href="#新特性-二-表单新特性" class="headerlink" title="新特性(二)表单新特性"></a>新特性(二)表单新特性</h2><ol>
+<li>10个 input 的 type 值</li>
+</ol>
+<ul>
+<li>email: 邮件输入域，在表单提交时提供简单的邮箱格式验证，并弹出一个提示窗口。</li>
+<li>url: 地址输入域，在表单提交时提供简单的URL地址格式验证，并弹出一个提示窗口。</li>
+<li>number: 数字输入域。(可设置min、max、step)</li>
+<li>tel: 电话号码输入域，在手机浏览器中弹出数字输入域。</li>
+<li>search: 搜索输入域，在手机浏览器右下角呈现搜索按键。</li>
+<li>range: 范围选择控件。</li>
+<li>color: 颜色选择控件。</li>
+<li>date/month/week: 时间选择控件。</li>
+</ul>
+<ol>
+<li>11个表单元素新属性</li>
+</ol>
+<ul>
+<li>autocomplete: 自动补全，是否自动记录之前提交的数据，以用于下一次输入建议。</li>
+<li>placeholder: 占位符，用于在输入框中显示提示性文字，与value不同，不能被提交。</li>
+<li>autofocus: 自动获得输入焦点。</li>
+<li>multiple: 是否允许多个输入值，若声明该属性，那么输入框中允许输入多个用逗号隔开的值。</li>
+<li>form: 值为某个表单的id，若设置，则该输入域可放在该表单外面。</li>
+<li>required: 在表单提交时会验证是否有输入，没有则弹出提示消息。</li>
+<li>maxlength: 限制最大长度，只有在有输入的情况下才有用，不区分中英文。</li>
+<li>minlength: 限制最小长度，但它不是H5标准属性，仅部分浏览器支持。</li>
+<li>min: 限定输入数字的最小值。</li>
+<li>max: 限定输入数字的最大值。</li>
+<li>step: 限定输入数字的步长，与min连用。</li>
+<li>pattern: 指定一个正则表达式，对输入进行验证。(正则默认首尾加^$)</li>
+</ul>
+<h2 id="新特性-三-Video-和-audio"><a href="#新特性-三-Video-和-audio" class="headerlink" title="新特性(三) Video 和 audio"></a>新特性(三) Video 和 audio</h2><ul>
+<li>视频(video) H5新加了video标签，用来播放视频，默认为一个300*150的inline-block。</li>
+<li>音频(audio) H5新加了audio标签，用来播放音频，默认为一个300*30并且display为none的inline-block(除非有controls属性)。但手机ios系统中的safari浏览器不支持这个标签，其余的都支持。</li>
+</ul>
+<p>属性: </p>
+<ul>
+<li>src: 指定要播放的资源路径。</li>
+<li>autoplay: 是否自动播放。</li>
+<li>controls: 是否显示播放控件。</li>
+<li>currentTime: 当前播放的时间点。</li>
+<li>duration: 总时长(s)。</li>
+<li>ended: 是否结束。</li>
+<li>loop: 是否循环播放。</li>
+<li>muted: 是否静音。</li>
+<li>volume: 音量设置(0~1)。</li>
+<li>paused: 是否在播放。</li>
+<li>preload: 指定视频预加载方案。</li>
+<li>play(): 播放。</li>
+<li>pause(): 暂停。</li>
+<li>onplay: 开始播放事件。</li>
+<li>onpause: 开始暂停事件。</li>
+<li>onplaying: 正在播放中事件。</li>
+</ul>
+<h2 id="新特性-四-canvas"><a href="#新特性-四-canvas" class="headerlink" title="新特性(四) canvas"></a>新特性(四) canvas</h2><p>H5引入了canvas标签，默认是一个300*150的inline-block。</p>
+<p>canvas的宽高只能用它自身的width和height属性来指定，而不能使用css样式中的width、height。</p>
+<ol>
+<li><p>获得‘画笔’对象，canvas所有的任务都需要它来执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var ctx=canvas.getContext(&apos;2d&apos;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一些canvas常用的属性</p>
+</li>
+</ol>
+<ul>
+<li>fillStyle: 填充样式</li>
+<li>strokeStyle: 描边样式</li>
+<li>lineWidth: 描边宽度</li>
+<li>font: 绘制文本所用的字体大小和类型</li>
+<li>textBaseline: 文本对其的基线</li>
+<li>shadowOffsetX、shadowOffsetY: 阴影偏移量</li>
+</ul>
+<ol>
+<li>使用canvas绘制图形</li>
+</ol>
+<ul>
+<li><p>绘制矩形</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ctx.fillRect(x,y,w,h);//填充一个矩形</span><br><span class="line">ctx.strokeRect(x,y,w,h);//描边一个矩形</span><br><span class="line">ctx.clearRect(x,y,w,h);//清除一个矩形范围内的内容</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>绘制文本</p>
+</li>
+</ul>
+<p>*要注意的是文本的定位点默认在文本基线(alphabetic)的起始点！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ctx.fillText(txt,x,y);//填充文本</span><br><span class="line">ctx.strokeText(txt,x,y);//描边文本</span><br><span class="line">ctx.measureText(txt);//测量</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>为图形文字添加阴影</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ctx.shadowColor=&apos;#000&apos;;//颜色</span><br><span class="line">ctx.shadowOffsetX=8;//水平偏移量</span><br><span class="line">ctx.shadowOffsetY=8;//垂直偏移量</span><br><span class="line">ctx.shadowBlur=10;//模糊半径</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在绘图时使用渐变色</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ctx.createLinearGradient(x1,y1,x2,y2);//创建线性渐变对象</span><br><span class="line">ctx.createRadialGradient(x1,y1,r1,x2,y2,r2);//创建径向渐变对象</span><br><span class="line">ctx.addColorStop;//添加颜色点</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>绘制路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ctx.beginPath();//开始路径</span><br><span class="line">ctx.closePath();//结束路径</span><br><span class="line">ctx.moveTo(x,y);//移动到指定点</span><br><span class="line">ctx.lineTo(x,y);//绘制直线路径到指定点</span><br><span class="line">ctx.arc();//绘制拱形路径</span><br><span class="line">ctx.ellipse();//绘制椭圆路径</span><br><span class="line">ctx.bezierCurveTo();//绘制贝塞尔曲线路径</span><br><span class="line">ctx.linJoin();//修改折线拐点处样式</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>绘制图像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctx.drawImage()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对于绘制上下文状态的改变和修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ctx.translate(x,y);//坐标轴原点移动到指定点</span><br><span class="line">ctx.rotate();//旋转画笔</span><br><span class="line">ctx.scale();//画笔缩放</span><br><span class="line">ctx.save();//保存绘图上下文当前的变形数据</span><br><span class="line">ctx.restore();//恢复最近一次的保存的变形相关的状态</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="新特性-五-SVG"><a href="#新特性-五-SVG" class="headerlink" title="新特性(五) SVG"></a>新特性(五) SVG</h2><p>相对于canvas绘图，SVG是一种绘制矢量图的技术，全称叫做Scalable Vector Graphics，可缩放的矢量图。</p>
+<p>在2000年就已经存在，H5把它纳入了标准标签库，并进行了一些瘦身。需要注意的是，SVG图形的属性不属于HTML DOM标准，需要用核心DOM的方法来操作；</p>
+<p>SVG的样式可以用css，但是只能用其专有的属性；如果要使用js动态生成SVG其中的元素，创建方法得用document.createElementNS(‘<a href="http://www.w3.org/2000/svg&#39;,&#39;标签名&#39;)；SVG元素的nodeName都是纯小写形式。" target="_blank" rel="noopener">http://www.w3.org/2000/svg&#39;,&#39;标签名&#39;)；SVG元素的nodeName都是纯小写形式。</a></p>
+<ol>
+<li>使用方法</li>
+</ol>
+<p>在HTML文件中直接使用SVG相关标签(\<svg>\</svg>)即可，默认是一个300*150的inline-block。<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element" target="_blank" rel="noopener">SVG 元素参考手册</a>，<br><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute" target="_blank" rel="noopener">SVG 属性参考手册</a>。</p>
+<h2 id="新特性-六-地理位置"><a href="#新特性-六-地理位置" class="headerlink" title="新特性(六) 地理位置"></a>新特性(六) 地理位置</h2><p>简单地用一句话概括就是，使用js获取浏览器当前所在的地理坐标，实现LBS(Location Based Service，基于定位的服务)。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//确定设备的位置并返回一个携带位置信息的 Position 对象。</span><br><span class="line">Geolocation.getCurrentPosition() </span><br><span class="line">//注册一个位置改变监听器，每当设备位置改变时，返回一个 long 类型的该监听器的ID值。</span><br><span class="line">Geolocation.watchPosition()</span><br><span class="line">//取消由 watchPosition()注册的位置监听器。</span><br><span class="line">Geolocation.clearWatch()</span><br></pre></td></tr></table></figure></p>
+<h2 id="新特性-七-拖放-API"><a href="#新特性-七-拖放-API" class="headerlink" title="新特性(七) 拖放 API"></a>新特性(七) 拖放 API</h2><p>拖放API是H5专门为了鼠标拖放而新提供了7个事件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drag dragend dragenter dragleave dragover dragstart drop</span><br></pre></td></tr></table></figure></p>
+<h2 id="新特性-八-Web-Worker"><a href="#新特性-八-Web-Worker" class="headerlink" title="新特性(八) Web Worker"></a>新特性(八) Web Worker</h2><p>由于js是单线程的，所以H5添加了这个叫做webWorker的概念，允许js创建多个线程，但是子线程完全受主线程控制，且不能操作DOM，从而来处理一些比较耗时的操作。</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_workers" target="_blank" rel="noopener">Web Worker 教程</a></p>
+<h2 id="新特性-九-Web-Storage"><a href="#新特性-九-Web-Storage" class="headerlink" title="新特性(九) Web Storage"></a>新特性(九) Web Storage</h2><p>H5的webStorage技术一共提供了两个对象：window.sessionStorage和window.localStorage。</p>
+<ol>
+<li>window.sessionStorage 会话级存储</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//存储一个数据</span><br><span class="line">sessionStorage[&apos;key&apos;]=value;</span><br><span class="line">sessionStorage.setItem(&apos;key&apos;,value);</span><br><span class="line">//读取一个数据</span><br><span class="line">var data = sessionStorage[&apos;key&apos;];</span><br><span class="line">var data = sessionStorage.getItem(&apos;key&apos;);</span><br><span class="line">//获取数据的个数</span><br><span class="line">sessionStorage.length</span><br><span class="line">//清除所有的数据</span><br><span class="line">sessionStorage.clear();</span><br><span class="line">//清除一个数据</span><br><span class="line">sessionStorage.removeItem(&apos;key&apos;);</span><br></pre></td></tr></table></figure>
+<ol>
+<li>window.localStorage 本地存储<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//存储一个数据</span><br><span class="line">localStorage[&apos;key&apos;]=value;</span><br><span class="line">localStorage.setItem(&apos;key&apos;,value);</span><br><span class="line">//读取一个数据</span><br><span class="line">var data = localStorage[&apos;key&apos;];</span><br><span class="line">var data = localStorage.getItem(&apos;key&apos;);</span><br><span class="line">//获取数据的个数</span><br><span class="line">localStorage.length</span><br><span class="line">//清除所有的数据</span><br><span class="line">localStorage.clear();</span><br><span class="line">//清除一个数据</span><br><span class="line">localStorage.removeItem(&apos;key&apos;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Storage_API" target="_blank" rel="noopener">Web Storage 教程</a></p>
+<p>　　</p>
+<h2 id="新特性-十-Web-Socket"><a href="#新特性-十-Web-Socket" class="headerlink" title="新特性(十) Web Socket"></a>新特性(十) Web Socket</h2><p>webSocket是H5新加的一个协议，为了解决http协议的request、response一一对应和它自身的被动性，以及ajax轮询等问题。一方可以发送多条信息，连接不中断，永久连接，但也导致了服务器连接的客户端数量有限。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var ws = new WebSocket(&apos;ws://地址:端口号&apos;);    //创建ws客户端</span><br><span class="line">ws.onopen=function()&#123;                        //连接成功时触发</span><br><span class="line">　　ws.send();                                //发送信息</span><br><span class="line">　　ws.onmessage=function(e)&#123;                 //获得信息时触发</span><br><span class="line">      e.data;                                //接收的信息</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket" target="_blank" rel="noopener">Web Socket 教程</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> HTML </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[常用 META 整理]]></title>
+      <url>/2017/08/20/html-meta/</url>
+      <content type="html"><![CDATA[<p>常用 meta 整理</p>
+<h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>content</td>
+<td>some text</td>
+<td>定义与http-equiv或name属性相关的元信息</td>
+<td></td>
+</tr>
+<tr>
+<td>http-equiv</td>
+<td>content-type / expire / refresh / set-cookie</td>
+<td>把content属性关联到HTTP头部。</td>
+</tr>
+<tr>
+<td>name</td>
+<td>author / description / keywords / generator / revised / others</td>
+<td>把 content 属性关联到一个名称。</td>
+</tr>
+<tr>
+<td>content</td>
+<td>some text</td>
+<td>定义用于翻译 content 属性值的格式。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="SEO"><a href="#SEO" class="headerlink" title="SEO"></a>SEO</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 关键词 描述 作者 --&gt;</span><br><span class="line">&lt;meta name=&quot;keywords&quot; content=&quot;your web keywords&quot; /&gt;</span><br><span class="line">&lt;meta name=&quot;description&quot; content=&quot;above 150 words&quot; /&gt;</span><br><span class="line">&lt;meta name=&quot;author&quot; content=&quot;author name&quot; /&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;meta name=&quot;robots&quot; content=&quot;index,follow&quot; /&gt;</span><br><span class="line">&lt;!--</span><br><span class="line">    all：文件将被检索，且页面上的链接可以被查询；</span><br><span class="line">    none：文件将不被检索，且页面上的链接不可以被查询；</span><br><span class="line">    index：文件将被检索；</span><br><span class="line">    follow：页面上的链接可以被查询；</span><br><span class="line">    noindex：文件将不被检索；</span><br><span class="line">    nofollow：页面上的链接不可以被查询。</span><br><span class="line"> --&gt;</span><br><span class="line"></span><br><span class="line">&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=&quot; /&gt;</span><br><span class="line">&lt;!-- content内的数字代表时间（秒），既多少时间后刷新。如果加url,则会重定向到指定网页（搜索引擎能够自动检测，也很容易被引擎视作误导而受到惩罚）。 --&gt;</span><br><span class="line">&lt;meta name=&quot;google&quot; content=&quot;index,follow&quot; /&gt;</span><br><span class="line">&lt;meta name=&quot;googlebot&quot; content=&quot;index,follow&quot; /&gt;</span><br><span class="line">&lt;meta name=&quot;verify&quot; content=&quot;index,follow&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="移动设备"><a href="#移动设备" class="headerlink" title="移动设备"></a>移动设备</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 响应式 --&gt;</span><br><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no&quot;/&gt;</span><br><span class="line">&lt;!-- `width=device-width` 会导致 iPhone 5 添加到主屏后以 WebApp 全屏模式打开页面时出现黑边 </span><br><span class="line">width：宽度（数值 / device-width）（范围从200 到10,000，默认为980 像素）</span><br><span class="line">height：高度（数值 / device-height）（范围从223 到10,000）</span><br><span class="line">initial-scale：初始的缩放比例 （范围从&gt;0 到10）</span><br><span class="line">minimum-scale：允许用户缩放到的最小比例</span><br><span class="line">maximum-scale：允许用户缩放到的最大比例</span><br><span class="line">user-scalable：用户是否可以手动缩 (no,yes)</span><br><span class="line">minimal-ui：可以在页面加载时最小化上下状态栏。（已弃用） </span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Iphone 独有的一些 meta --&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 启用 WebApp 全屏模式 --&gt;</span><br><span class="line">&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 隐藏状态栏/设置状态栏颜色   只有在开启WebApp全屏模式时才生效。content的值为default | black | black-translucent 。 --&gt;</span><br><span class="line">&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black-translucent&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 添加到主屏后的标题 --&gt;</span><br><span class="line">&lt;meta name=&quot;apple-mobile-web-app-title&quot; content=&quot;标题&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 忽略数字自动识别为电话号码 --&gt;</span><br><span class="line">&lt;meta content=&quot;telephone=no&quot; name=&quot;format-detection&quot; /&gt; </span><br><span class="line"></span><br><span class="line">&lt;!-- 忽略识别邮箱 --&gt;</span><br><span class="line">&lt;meta content=&quot;email=no&quot; name=&quot;format-detection&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 添加智能 App 广告条 Smart App Banner --&gt;</span><br><span class="line">&lt;meta name=&quot;apple-itunes-app&quot; content=&quot;app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL&quot;&gt; </span><br><span class="line"></span><br><span class="line">&lt;!-- 其他不常用设备兼容 --&gt;</span><br><span class="line">&lt;!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 --&gt;</span><br><span class="line">&lt;meta name=&quot;HandheldFriendly&quot; content=&quot;true&quot;&gt;</span><br><span class="line">&lt;!-- 微软的老式浏览器 --&gt;</span><br><span class="line">&lt;meta name=&quot;MobileOptimized&quot; content=&quot;320&quot;&gt;</span><br><span class="line">&lt;!-- uc强制竖屏 --&gt;</span><br><span class="line">&lt;meta name=&quot;screen-orientation&quot; content=&quot;portrait&quot;&gt;</span><br><span class="line">&lt;!-- QQ强制竖屏 --&gt;</span><br><span class="line">&lt;meta name=&quot;x5-orientation&quot; content=&quot;portrait&quot;&gt;</span><br><span class="line">&lt;!-- UC强制全屏 --&gt;</span><br><span class="line">&lt;meta name=&quot;full-screen&quot; content=&quot;yes&quot;&gt;</span><br><span class="line">&lt;!-- QQ强制全屏 --&gt;</span><br><span class="line">&lt;meta name=&quot;x5-fullscreen&quot; content=&quot;true&quot;&gt;</span><br><span class="line">&lt;!-- UC应用模式 --&gt;</span><br><span class="line">&lt;meta name=&quot;browsermode&quot; content=&quot;application&quot;&gt;</span><br><span class="line">&lt;!-- QQ应用模式 --&gt;</span><br><span class="line">&lt;meta name=&quot;x5-page-mode&quot; content=&quot;app&quot;&gt;</span><br><span class="line">&lt;!-- windows phone 点击无高光 --&gt;</span><br><span class="line">&lt;meta name=&quot;msapplication-tap-highlight&quot; content=&quot;no&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="网页相关"><a href="#网页相关" class="headerlink" title="网页相关"></a>网页相关</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 网页编码 --&gt;</span><br><span class="line">&lt;meta charset=&apos;utf-8&apos; /&gt;</span><br><span class="line"></span><br><span class="line">浏览器兼容</span><br><span class="line">&lt;!-- 关于X-UA-Compatible --&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot; /&gt;</span><br><span class="line">&lt;!-- 使用IE6 --&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=6&quot; &gt;</span><br><span class="line">&lt;!-- 使用IE7 --&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=7&quot; &gt;</span><br><span class="line">&lt;!-- 使用IE8 --&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=8&quot; &gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 浏览器内核控制  国内浏览器的兼容配置 --&gt;</span><br><span class="line">&lt;meta name=&quot;renderer&quot; content=&quot;webkit|ie-comp|ie-stand&quot;&gt;</span><br><span class="line">&lt;!-- </span><br><span class="line">1. 搜狗高速浏览器、QQ浏览器：IE内核（兼容模式）</span><br><span class="line">2. 360极速浏览器、遨游浏览器：Webkit内核（极速模式） </span><br><span class="line">--&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;!-- windows 8 --&gt;</span><br><span class="line">&lt;!-- Windows 8 磁贴颜色 --&gt;</span><br><span class="line">&lt;meta name=&quot;msapplication-TileColor&quot; content=&quot;#000&quot;/&gt; </span><br><span class="line">&lt;!-- Windows 8 磁贴图标 --&gt;</span><br><span class="line">&lt;meta name=&quot;msapplication-TileImage&quot; content=&quot;icon.png&quot;/&gt; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;!-- 站点适配 --&gt;</span><br><span class="line">&lt;meta name=&quot;mobile-agent&quot;content=&quot;format=[wml|xhtml|html5]; url=url&quot;&gt;</span><br><span class="line">&lt;!--</span><br><span class="line">[wml|xhtml|html5]根据手机页的协议语言，选择其中一种；</span><br><span class="line">url=&quot;url&quot; 后者代表当前PC页所对应的手机页URL，两者必须是一一对应关系。</span><br><span class="line"> --&gt;</span><br><span class="line"></span><br><span class="line"> &lt;!-- 转码申明：用百度打开网页可能会对其进行转码（比如贴广告），避免转码可添加如下meta --&gt;</span><br><span class="line">&lt;meta http-equiv=&quot;Cache-Control&quot; content=&quot;no-siteapp&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="常用组合"><a href="#常用组合" class="headerlink" title="常用组合"></a>常用组合</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta charset=&apos;utf-8&apos; /&gt;</span><br><span class="line">&lt;meta name=&quot;renderer&quot; content=&quot;webkit|ie-comp|ie-stand&quot;&gt;</span><br><span class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no&quot;/&gt;</span><br><span class="line">&lt;meta name=&quot;keywords&quot; content=&quot;your web keywords&quot; /&gt;</span><br><span class="line">&lt;meta name=&quot;description&quot; content=&quot;above 150 words&quot; /&gt;</span><br><span class="line">&lt;meta name=&quot;author&quot; content=&quot;author name&quot; /&gt;</span><br></pre></td></tr></table></figure>]]></content>
+      
+        <categories>
+            
+            <category> HTML </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[webpack 学习笔记二]]></title>
+      <url>/2017/08/04/webpack%20note%2002/</url>
+      <content type="html"><![CDATA[<h2 id="loader-概念引入"><a href="#loader-概念引入" class="headerlink" title="loader 概念引入"></a>loader 概念引入</h2><p>webpack 第一理念为：一切皆模板 ，然而 webpack 只能处理 javascript 模块，那它是如何处理 “一切皆模块” 的呢？</p>
+<p>这儿就需要引入 loader 的概念，webpack 通过对应的 loader 处理对应的模块，举个简单例子，我们可以通过 css-loader|style-loader 处理 CSS 文件，通过 file-loader|url-loader 处理图片或者文件。</p>
+<p>以下是概念（复制的，咳咳~~~）</p>
+<p>Loader可以理解为是模块和资源的转换器，它本身是一个函数，接受源文件作为参数，返回转换的结果。这样，我们就可以通过require来加载任何类型的模块或文件，比如VUE、JSX、SASS 或图片。</p>
+<p>先来看看 loader 有哪些特性？(网上复制的，咳咳咳咳~~~~。<a href="http://blog.guowenfh.com/2016/03/24/vue-webpack-02-deploy/" target="_blank" rel="noopener">地址</a>)</p>
+<ul>
+<li>Loader可以通过管道方式链式调用，每个loader可以把资源转换成任意格式并传递给下一个loader，但是最后一个loader必须返回JavaScript。</li>
+<li>Loader可以同步或异步执行。</li>
+<li>Loader运行在node.js环境中，所以可以做任何可能的事情。</li>
+<li>Loader可以接受参数，以此来传递配置项给loader。</li>
+<li>Loader可以通过文件扩展名（或正则表达式）绑定给不同类型的文件。</li>
+<li>Loader可以通过npm发布和安装。</li>
+<li>除了通过package.json的main指定，通常的模块也可以导出一个loader来使用。</li>
+<li>Loader可以访问配置。</li>
+<li>插件可以让loader拥有更多特性。</li>
+<li>Loader可以分发出附加的任意文件。</li>
+</ul>
+<h2 id="css-loader-style-loader"><a href="#css-loader-style-loader" class="headerlink" title="css-loader|style-loader"></a>css-loader|style-loader</h2><p>进入项目目录安装 css-loader|style-loader </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install css-loader style-loader --save-dev</span><br></pre></td></tr></table></figure>
+<p>安装成功后</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Tool </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[webpack 学习笔记一]]></title>
+      <url>/2017/08/04/webpack%20note%2001/</url>
+      <content type="html"><![CDATA[<p>以下笔记摘抄至 <a href="http://blog.guowenfh.com/2016/03/24/vue-webpack-01-base/" target="_blank" rel="noopener">webpack入坑之旅</a> ，再加上自己的一部分理解。</p>
+<h2 id="webpack-理念"><a href="#webpack-理念" class="headerlink" title="webpack 理念"></a>webpack 理念</h2><p>这有必要再次阐述一下 webpack 的理念：</p>
+<ol>
+<li>一切皆模块<br>正如js文件可以是一个“模块（module）”一样，其他的（如css、image或html）文件也可视作模 块。因此，你可以require(‘myJSfile.js’)亦可以require(‘myCSSfile.css’)。这意味着我们可以将事物（业务）分割成更小的易于管理的片段，从而达到重复利用等的目的。</li>
+<li>按需加载<br>传统的模块打包工具（module bundlers）最终将所有的模块编译生成一个庞大的bundle.js文件。但是在真实的app里边，“bundle.js”文件可能有10M到15M之大可能会导致应用一直处于加载中状态。因此Webpack使用许多特性来分割代码然后生成多个“bundle”文件，而且异步加载部分代码以实现按需加载。</li>
+</ol>
+<h2 id="Webapck-和其他模块化工具有什么区别呢？"><a href="#Webapck-和其他模块化工具有什么区别呢？" class="headerlink" title="Webapck 和其他模块化工具有什么区别呢？"></a>Webapck 和其他模块化工具有什么区别呢？</h2><p>(这部分是复制的)</p>
+<ol>
+<li>代码拆分<br>Webpack 有两种组织模块依赖的方式，同步和异步。异步依赖作为分割点，形成一个新的快。在优化了依赖树后，每一个异步区块都作为一个文件被打包。</li>
+<li>Loader<br>Webpack 本身只能处理原生的 JavaScript 模块，但是 loader 转换器可以将各种类型的资源转换成 JavaScript 模块。这样，任何资源都可以成为 Webpack 可以处理的模块。</li>
+<li>智能解析<br>Webpack 有一个智能解析器，几乎可以处理任何第三方库，无论它们的模块形式是 CommonJS、 AMD 还是普通的 JS 文件。甚至在加载依赖的时候，允许使用动态表达式 require(“./templates/“ + name + “.jade”)。</li>
+<li>插件系统<br>Webpack 还有一个功能丰富的插件系统。大多数内容功能都是基于这个插件系统运行的，还可以开发和使用开源的 Webpack 插件，来满足各式各样的需求。</li>
+<li>快速运行<br>Webpack 使用异步 I/O 和多级缓存提高运行效率，这使得 Webpack 能够以令人难以置信的速度快速增量编译。</li>
+</ol>
+<h2 id="webpack-安装"><a href="#webpack-安装" class="headerlink" title="webpack 安装"></a>webpack 安装</h2><p>本笔记介绍使用 npm 安装 webpack ，和其他 npm 包安装一样使用安装指令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//进入文件目录</span><br><span class="line">cd &lt;filedir&gt;</span><br><span class="line">// 初始化 package.json，如无需要直接一直 enter 即可</span><br><span class="line">npm init</span><br><span class="line">// 安装 webpack 可以使用简化命令 npm i webpack -D</span><br><span class="line">npm install webpack --save-dev</span><br><span class="line">// --save ：模块名将被添加到dependencies，可以简化为参数-S。</span><br><span class="line">// --save-dev  –save-dev: 模块名将被添加到devDependencies，可以简化为参数-D。</span><br></pre></td></tr></table></figure></p>
+<p>之后得到的 package.json 是类似这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;app3&quot;,//项目名称</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,//项目版本号</span><br><span class="line">  &quot;description&quot;: &quot;webpack learn&quot;,//项目描述</span><br><span class="line">  &quot;main&quot;: &quot;index.js&quot;,//项目主入口</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;//npm命令</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;author&quot;: &quot;morelearn&quot;,//作者</span><br><span class="line">  &quot;license&quot;: &quot;MIT&quot;,//许可证</span><br><span class="line">  &quot;devDependencies&quot;: &#123; //依赖包</span><br><span class="line">    &quot;webpack&quot;: &quot;^2.4.1&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="webpack-最最简单例子-将简单复杂化"><a href="#webpack-最最简单例子-将简单复杂化" class="headerlink" title="webpack 最最简单例子(将简单复杂化 - _ -|||)"></a>webpack 最最简单例子(将简单复杂化 - _ -|||)</h2><p>接下来进行最最简单的项目吧：</p>
+<ol>
+<li>创建一个静态文件 index.html ;</li>
+<li>创建 webpack 主入口 entry.js ;</li>
+</ol>
+<p>分别代码如下：<br>index.html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">  &lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;webpack learn&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;h1 id=&quot;h1&quot;&gt;&lt;/h1&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;bundle.js&quot;&gt;&lt;/script&gt;&lt;!-- 生成的js文件为 bundle.js 所以这儿引入这个文件 --&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>entry.js:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/** entry.js 入口 **/</span><br><span class="line">document.getElementById(&quot;h1&quot;).innerHTML=&quot;这是 webpack 打包成功！&quot;;</span><br></pre></td></tr></table></figure></p>
+<p>运行命令 <code>webpack entry.js bundle.js</code><br>成功CMD命令行显示如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Hash: 5684794b124eeb70194d</span><br><span class="line">Version: webpack 2.4.1</span><br><span class="line">Time: 82ms</span><br><span class="line">    Asset     Size  Chunks             Chunk Names</span><br><span class="line">bundle.js  2.71 kB       0  [emitted]  main</span><br><span class="line">   [0] ./entry.js 80 bytes &#123;0&#125; [built]</span><br></pre></td></tr></table></figure></p>
+<p>可以看一下 bundle.js 代码，发现在之前得一段代码是 webpack 的封装代码，具体功能暂时没有详细看，所以没能说明一个仔细的来。在之后的一段代码为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(function(module, exports, __webpack_require__) &#123;</span><br><span class="line">  /** entry.js 入口 **/</span><br><span class="line">  document.getElementById(&quot;h1&quot;).innerHTML=&quot;这是 webpack 打包成功！&quot;;</span><br><span class="line">  __webpack_require__(0);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>由此可见，webpack 将 entry.js 的代码使用匿名函数的方式打包到了 bundle.js 里面。</p>
+<p>这儿会产生一个想法，干嘛用它呀，反而更加复杂了（雅蠛蝶）。</p>
+<h2 id="一个更好的例子-有点理解了"><a href="#一个更好的例子-有点理解了" class="headerlink" title="一个更好的例子(有点理解了)"></a>一个更好的例子(有点理解了)</h2><p>在上面的基础上再来新创建一个 first.js ，在 entry.js 里面引入它</p>
+<p>first.js 代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var h2 = document.createElement(&quot;h2&quot;);</span><br><span class="line">h2.innerHTML = &quot;这是入口引入的另外一个js，打包成功~~&quot;</span><br><span class="line">document.body.appendChild(h2);</span><br></pre></td></tr></table></figure></p>
+<p>entry.js 代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/** entry.js 入口 **/</span><br><span class="line">document.getElementById(&quot;h1&quot;).innerHTML=&quot;这是 webpack 打包成功！&quot;;</span><br><span class="line">require(&quot;./first.js&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>再运行命令 <code>webpack entry.js bundle.js</code><br>成功CMD命令行显示如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Hash: f925000a88e899c2ac1c</span><br><span class="line">Version: webpack 2.4.1</span><br><span class="line">Time: 146ms</span><br><span class="line">    Asset     Size  Chunks             Chu</span><br><span class="line">bundle.js  2.94 kB       0  [emitted]  mai</span><br><span class="line">   [0] ./first.js 117 bytes &#123;0&#125; [built]</span><br><span class="line">   [1] ./entry.js 106 bytes &#123;0&#125; [built]</span><br></pre></td></tr></table></figure></p>
+<p>同样在 bundle.js 里面在 entry.js 代码的上方增加了代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(function(module, exports) &#123;</span><br><span class="line">  var h2 = document.createElement(&quot;h2&quot;);</span><br><span class="line">  h2.innerHTML = &quot;这是入口引入的另外一个js，打包成功~~&quot;</span><br><span class="line">  document.body.appendChild(h2);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>于是我们猜测 webpack 是通过在入口文件里面递归寻找依赖文件，为了证实我们的猜想，我们在 first.js 里面增加一个依赖，来看看情况，创建 second.js 代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var h3 = document.createElement(&quot;h3&quot;);</span><br><span class="line">h3.innerHTML = &quot;验证递归寻找依赖并打包的猜想&quot;;</span><br><span class="line">document.body.appendChild(h3);</span><br></pre></td></tr></table></figure></p>
+<p>在 first.js 里面增加一行代码 <code>require(&quot;./second.js&quot;);</code><br>再次运行命令 <code>webpack entry.js bundle.js</code><br>运行成功CMD命令行显示如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Hash: 6091c80a79e5d89e3c28</span><br><span class="line">Version: webpack 2.4.1</span><br><span class="line">Time: 325ms</span><br><span class="line">    Asset     Size  Chunks             Chun</span><br><span class="line">bundle.js  3.14 kB       0  [emitted]  main</span><br><span class="line">   [0] ./first.js 138 bytes &#123;0&#125; [built]</span><br><span class="line">   [1] ./entry.js 106 bytes &#123;0&#125; [built]</span><br><span class="line">   [2] ./second.js 110 bytes &#123;0&#125; [built]</span><br></pre></td></tr></table></figure></p>
+<p>同样在 bundle.js 里面增加了代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(function(module, exports) &#123;</span><br><span class="line">var h3 = document.createElement(&quot;h3&quot;);</span><br><span class="line">h3.innerHTML = &quot;验证递归寻找依赖并打包的猜想&quot;;</span><br><span class="line">document.body.appendChild(h3);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>现在我们来看整个 bundle.js 里面的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">/******/ ([</span><br><span class="line">/* 0 */</span><br><span class="line">/***/ (function(module, exports, __webpack_require__) &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var h2 = document.createElement(&quot;h2&quot;);</span><br><span class="line">h2.innerHTML = &quot;这是入口引入的另外一个js，打包成功~~&quot;</span><br><span class="line">document.body.appendChild(h2);</span><br><span class="line"></span><br><span class="line">__webpack_require__(2);</span><br><span class="line"></span><br><span class="line">/***/ &#125;),</span><br><span class="line">/* 1 */</span><br><span class="line">/***/ (function(module, exports, __webpack_require__) &#123;</span><br><span class="line"></span><br><span class="line">/** entry.js 入口 **/</span><br><span class="line">document.getElementById(&quot;h1&quot;).innerHTML=&quot;这是 webpack 打包成功！&quot;;</span><br><span class="line"></span><br><span class="line">__webpack_require__(0);</span><br><span class="line"></span><br><span class="line">/***/ &#125;),</span><br><span class="line">/* 2 */</span><br><span class="line">/***/ (function(module, exports) &#123;</span><br><span class="line"></span><br><span class="line">var h3 = document.createElement(&quot;h3&quot;);</span><br><span class="line">h3.innerHTML = &quot;验证递归寻找依赖并打包的猜想&quot;;</span><br><span class="line">document.body.appendChild(h3);</span><br><span class="line"></span><br><span class="line">/***/ &#125;)</span><br><span class="line">/******/ ]);</span><br></pre></td></tr></table></figure></p>
+<p>我们写的三段代码均在这里面，但是这个顺序有点琢磨不透，待下回仔细分析。</p>
+<p>通过以上两个例子，我们能够简单的理解 webpack 的理念和方法。那么接下来我们进入到更加深入的使用 webpack 来加强理解。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Tool </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+  
+  
+    
+  
+</search>
